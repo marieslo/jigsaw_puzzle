@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+:root {
+    --primary-bg: #e4c4eee3;
+    --secondary-bg: #565de0;
+    --upload-bg: #c5bf8b;
+    --button-disabled-bg: #cfd8dc;
+    --text-color: #ffffff;
+    --puzzle-bg: rgba(245, 245, 245, 0.8);
+    --shadow: 0 0 10px rgb(244, 160, 249);
+    --puzzle-hover-shadow: rgba(0, 0, 0, 0.2);
+    --puzzle-piece-shadow: rgba(0, 0, 0, 0.1);
+    --puzzle-piece-hover-shadow: rgba(0, 0, 0, 0.2);
+    --border-radius: 20px;
+}
+
+body {
+    font-family: "Kodchasan", serif;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    color: var(--text-color);
+    height: 100vh;
+    margin: 0 auto;
+    padding: 0;
+    background: linear-gradient(45deg, var(--primary-bg), var(--secondary-bg));
+    text-align: center;
+    place-items: center;
+}
+
+h1 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: -2px;
+    grid-column: 1 / -1;
+    grid-row: 1;
+}
+
+#timerDisplay {
+    font-family: "Kodchasan", serif;
+    font-size: 1.5rem;
+    font-weight: var(--font-weight);
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+    grid-column: 1 / -1;
+}
+
+h1, #timerDisplay {
+    font-weight: var(--font-weight);
+    text-transform: uppercase;
+    text-align: center;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 1px rgb(255, 255, 255), 
+                 0 0 2px rgba(229, 130, 211, 0.8), 
+                 var(--shadow);
+}
+
+.upload-area {
+    padding: 30px;
+    width: 320px;
+    margin: 0 auto;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    &:hover {
+        transform: translateY(-5px);
+    }
+
+    p {
+        margin: 0;
+        font-size: 1.1rem;
+        color: var(--upload-text);
+        font-weight: 500;
+    }
+}
+
+.upload-label {
+    color: var(--upload-text);
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+button {
+    background-color: transparent;
+    background-size: 200%;
+    background-position: 50% 50%;
+    color: var(--text-color);
+    padding: 10px;
+    cursor: pointer;
+    font-family: "Kodchasan", serif;
+    font-size: 1rem;
+    width: 150px;
+    transition: background-position 0.3s ease, box-shadow 0.3s ease;
+    font-weight: 500;
+    border-radius: var(--border-radius);
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(120deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+        transform: rotate(45deg);
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+    }
+
+    &:hover {
+        box-shadow: var(--shadow);
+        border: 0.5px solid rgb(244, 160, 249);
+
+        &::before {
+            opacity: 1;
+            top: 0;
+            left: 0;
+            transform: rotate(45deg);
+        }
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
+
+    &:disabled {
+        background-color: var(--button-disabled-bg);
+        cursor: not-allowed;
+    }
+}
+
+#puzzleWrapper {
+    position: relative;
+    width: 100vw;
+    margin: 0 auto;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    padding: 20px;
+    justify-items: center;
+    align-items: center;
+}
+
+.puzzle-area {
+    width: 80vw;
+    height: 100%;
+    max-width: 50vw;
+    max-height: 70vh;
+    position: relative;
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    overflow: hidden;
+}
+
+.puzzle-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+#originalImageArea,
+#shuffledPuzzleArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
