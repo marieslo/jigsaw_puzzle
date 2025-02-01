@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jigsaw Puzzle</title>
+    <link rel="stylesheet" href="style.scss">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Jigsaw Puzzle</h1>
+        <div id="uploadArea" class="upload-area">
+            <p>Click here to upload an image</p>
+        </div>
+        <div id="timerDisplay" style="display: none;"></div>
+        <input type="file" id="imageUpload" style="display: none;">
+        <div class="buttons-container">
+            <button id="resetImageButton" style="display: none;">Reset Image</button>
+            <button id="splitImageButton" style="display: none;" disabled>Start Game</button>
+            <button id="finishButton" style="display: none;">Finish Game</button>
+        </div>
+        <div id="puzzleWrapper">
+            <div id="originalImageArea" class="puzzle-area">
+                <div id="originalImageContainer" class="puzzle-container"></div>
+            </div>
+            <div id="shuffledPuzzleArea" class="puzzle-area"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
